@@ -1,0 +1,26 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "autoresearch-qwen-mlx"
+version = "0.1.0"
+description = "Training-code autoresearch for Qwen3-VL-4B on DocVQA."
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+  "accelerate>=1.11.0",
+  "datasets>=4.8.4",
+  "matplotlib>=3.10.0",
+  "peft>=0.17.1",
+  "pillow>=12.2.0",
+  "torch>=2.11.0",
+  "transformers>=5.5.3",
+  "torchvision>=0.26.0",
+]
+
+[project.scripts]
+autoresearch-qwen-mlx = "autoresearch_qwen_mlx.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/autoresearch_qwen_mlx"]

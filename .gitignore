@@ -1,0 +1,31 @@
+.DS_Store
+.pytest_cache/
+artifacts/
+Qwen/
+
+# Python-generated files
+__pycache__/
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+worktrees/
+results/
+queue/
+
+# Experimental code/artifacts
+dev/
+
+# Agent prompt files (generated per-session by launchers)
+CLAUDE.md
+AGENTS.md
+
+# Results file
+results.tsv
+
+# Experiment logs
+run.log
+autoresearch_progress.png
