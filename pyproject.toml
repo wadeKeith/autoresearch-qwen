@@ -1,0 +1,28 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "autoresearch-qwen"
+version = "0.2.0"
+description = "Training-code autoresearch for Qwen3-VL-4B on DocVQA (NVIDIA multi-GPU)."
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+  "accelerate>=1.11.0",
+  "datasets>=4.8.4",
+  "deepspeed>=0.16.0",
+  "huggingface_hub>=0.32.0",
+  "matplotlib>=3.10.0",
+  "peft>=0.17.1",
+  "pillow>=12.2.0",
+  "torch>=2.11.0",
+  "transformers>=5.5.3",
+  "torchvision>=0.26.0",
+]
+
+[project.scripts]
+autoresearch-qwen = "autoresearch_qwen.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/autoresearch_qwen"]

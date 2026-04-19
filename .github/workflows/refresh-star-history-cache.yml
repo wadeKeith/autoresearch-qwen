@@ -1,0 +1,48 @@
+name: Refresh Star History Cache
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 */6 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  refresh-cache-buster:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Update README cache buster
+        run: |
+          python - <<'PY'
+          from datetime import datetime, timezone
+          from pathlib import Path
+          import re
+
+          readme = Path("README.md")
+          text = readme.read_text(encoding="utf-8")
+          cache_value = datetime.now(timezone.utc).strftime("%Y%m%d%H")
+          updated = re.sub(
+              r"(https://api\.star-history\.com/svg\?repos=wadeKeith/autoresearch-qwen&type=Date)(?:&cache=\d+)?",
+              rf"\1&cache={cache_value}",
+              text,
+          )
+          if updated != text:
+              readme.write_text(updated, encoding="utf-8")
+          PY
+
+      - name: Commit refreshed README
+        run: |
+          if git diff --quiet -- README.md; then
+            echo "No cache change to commit."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "Refresh star history cache buster"
+          git push
