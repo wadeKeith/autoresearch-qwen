@@ -122,7 +122,7 @@ If you want to change the benchmark contract itself, open an issue first so the 
 
 ## Star Trend
 
-[![Star History Chart](https://api.star-history.com/svg?repos=wadeKeith/autoresearch-qwen&type=Date&cache=2026042719)](https://star-history.com/#wadeKeith/autoresearch-qwen&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=wadeKeith/autoresearch-qwen&type=Date&cache=2026042804)](https://star-history.com/#wadeKeith/autoresearch-qwen&Date)
 
 ## License
 
